@@ -1,0 +1,63 @@
+/* App Container */
+.App {
+  text-align: center;
+}
+
+/* Header Styles */
+.Header {
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+/* Main Content Styles */
+.Main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.add-tasks {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.task-input {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.tasks-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tasks-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.completed-task {
+  text-decoration: line-through;
+}
+
+/* Button Styles */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.tasks-list ul {
+  list-style: none;
+  padding: 0;
+}
