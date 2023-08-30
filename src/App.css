@@ -1,4 +1,11 @@
-/* App Container */
+/* Reset default styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
 .App {
   text-align: center;
 }
@@ -17,10 +24,12 @@
   padding: 20px;
 }
 
-.add-tasks {
+/* Add tasks input and button */
+.add-tasks-wrapper {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  width: 600px;
 }
 
 .task-input {
@@ -28,17 +37,25 @@
   padding: 5px;
 }
 
-.tasks-list ul {
+/* Task list styles */
+.tasks-list-wrapper {
+  width: 600px;
+}
+
+.tasks-list-wrapper ul {
   list-style: none;
   padding: 0;
 }
 
-.tasks-list li {
+.tasks-list-wrapper li {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin: 20px 0;
+  max-width: 100%;
 }
 
+/* Completed task style */
 .completed-task {
   text-decoration: line-through;
 }
@@ -57,7 +74,51 @@ button:hover {
   background-color: #0056b3;
 }
 
-.tasks-list ul {
-  list-style: none;
-  padding: 0;
+/* Task content and buttons */
+.task-content {
+  display: flex;
+  flex-grow: 1;
+  max-width: 70%;
+}
+
+.task-text {
+  word-break: break-all;
+  margin-left: 10px; 
+}
+
+.task-checkbox {
+  margin-right: 10px; 
+}
+
+.task-buttons {
+  display: flex;
+  align-items: center;
+}
+
+
+@media (max-width: 750px){
+  .add-tasks-wrapper{
+    width: 500px;
+  }
+  .tasks-list-wrapper{
+    width: 500px;
+  }
+}
+
+@media (max-width: 500px){
+  .add-tasks-wrapper{
+    width: 350px;
+  }
+  .tasks-list-wrapper{
+    width: 350px;
+  }
+}
+
+@media (max-width: 350px){
+  .add-tasks-wrapper{
+    width: 250px;
+  }
+  .tasks-list-wrapper{
+    width: 250px;
+  }
 }

@@ -51,7 +51,7 @@ function Main() {
 
   return (
     <div className="Main">
-      <div className="add-tasks">
+      <div className="add-tasks-wrapper">
         <input
           className="task-input"
           type="text"
@@ -61,33 +61,34 @@ function Main() {
         />
         <button onClick={addTask}>Add Task</button>
       </div>
-      <div className="tasks-list">
+      <div className="tasks-list-wrapper">
         <ul>
           {tasks.map((task, index) => (
             <li key={index}>
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => toggleComplete(index)}
-              />
-              <span
-                id="task"
-                className={task.completed ? "completed-task" : ""}
-              >
-                {editingIndex === index ? (
-                  <input
-                    type="text"
-                    value={editedText}
-                    onChange={(e) => setEditedText(e.target.value)}
-                  />
-                ) : (
-                  task.text
-                )}
-              </span>
-              <button onClick={() => handleEditTask(index)}>
-                {editingIndex === index ? "Save" : "Edit"}
-              </button>
-              <button onClick={() => handleDeleteTask(index)}>Delete</button>
+              <div className="task-content">
+                <input className="tast-checkbox"
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => toggleComplete(index)}
+                />
+                <span className={task.completed ? "completed-task task-text" : "task-text"}>
+                  {editingIndex === index ? (
+                    <input
+                      type="text"
+                      value={editedText}
+                      onChange={(e) => setEditedText(e.target.value)}
+                    />
+                  ) : (
+                    task.text
+                  )}
+                </span>
+              </div>
+              <div className="task-buttons">
+                <button onClick={() => handleEditTask(index)}>
+                  {editingIndex === index ? "Save" : "Edit"}
+                </button>
+                <button onClick={() => handleDeleteTask(index)}>Delete</button>
+              </div>
             </li>
           ))}
         </ul>
