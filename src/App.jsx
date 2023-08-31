@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom/client";
+import { FiEdit } from "react-icons/fi";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 import "./App.css";
 
 function Header() {
@@ -15,6 +18,14 @@ function Main() {
   const [tasks, setTasks] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedText, setEditedText] = useState("");
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [input]);
 
   function handleAddTask(e) {
     setInput(e.target.value);
@@ -52,28 +63,37 @@ function Main() {
   return (
     <div className="Main">
       <div className="add-tasks-wrapper">
-        <input
+        <textarea
+          ref={textareaRef}
           className="task-input"
-          type="text"
+          rows={1}
           placeholder="Add tasks here..."
           value={input}
           onChange={handleAddTask}
         />
-        <button onClick={addTask}>Add Task</button>
+        <a className="add-btn" onClick={addTask}>
+          <BsFillPlusCircleFill />
+        </a>
       </div>
       <div className="tasks-list-wrapper">
         <ul>
           {tasks.map((task, index) => (
             <li key={index}>
               <div className="task-content">
-                <input className="tast-checkbox"
+                <input
+                  className="tast-checkbox"
                   type="checkbox"
                   checked={task.completed}
                   onChange={() => toggleComplete(index)}
                 />
-                <span className={task.completed ? "completed-task task-text" : "task-text"}>
+                <span
+                  className={
+                    task.completed ? "completed-task task-text" : "task-text"
+                  }
+                >
                   {editingIndex === index ? (
                     <input
+                      className="task-edit-input"
                       type="text"
                       value={editedText}
                       onChange={(e) => setEditedText(e.target.value)}
@@ -84,10 +104,15 @@ function Main() {
                 </span>
               </div>
               <div className="task-buttons">
-                <button onClick={() => handleEditTask(index)}>
-                  {editingIndex === index ? "Save" : "Edit"}
-                </button>
-                <button onClick={() => handleDeleteTask(index)}>Delete</button>
+                <a className="edit-btn" onClick={() => handleEditTask(index)}>
+                  {editingIndex === index ? "Save" : <FiEdit />}
+                </a>
+                <a
+                  className="delete-btn"
+                  onClick={() => handleDeleteTask(index)}
+                >
+                  <FaRegTrashCan />
+                </a>
               </div>
             </li>
           ))}

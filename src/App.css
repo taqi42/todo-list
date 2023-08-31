@@ -1,5 +1,7 @@
 /* Reset default styles */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -34,7 +36,31 @@
 
 .task-input {
   flex-grow: 1;
-  padding: 5px;
+  padding: 20px 15px;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 3px #333;
+  box-shadow: 0 0 3px #333;
+  resize: none;
+  overflow: hidden;
+  height: auto;
+}
+
+
+textarea:focus-visible {
+  outline: none;
+}
+
+/* Button Styles */
+.add-btn {
+  font-size: 2rem;
+  margin: auto;
+  margin-left: 15px;
+  padding-top: 10px;
+}
+
+.add-btn:hover{
+  cursor: pointer;
 }
 
 /* Task list styles */
@@ -60,20 +86,6 @@
   text-decoration: line-through;
 }
 
-/* Button Styles */
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
 /* Task content and buttons */
 .task-content {
   display: flex;
@@ -83,42 +95,77 @@ button:hover {
 
 .task-text {
   word-break: break-all;
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 .task-checkbox {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .task-buttons {
   display: flex;
   align-items: center;
+  width: 70px;
+  justify-content: space-between;
 }
 
+.task-edit-input{
+  width: 500px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 3px #333;
+  box-shadow: 0 0 3px #333;
+  resize: none;
+  overflow: hidden;
+}
 
-@media (max-width: 750px){
-  .add-tasks-wrapper{
+.edit-btn {
+  border-radius: 50%;
+  background-color: transparent;
+  color: #424242;
+  text-align: center;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  color: #000000;
+  transition: 0.3s ease-out;
+}
+
+.delete-btn {
+  color: #424242;
+}
+
+.delete-btn:hover {
+  color: red;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+}
+
+@media (max-width: 750px) {
+  .add-tasks-wrapper {
     width: 500px;
   }
-  .tasks-list-wrapper{
+  .tasks-list-wrapper {
     width: 500px;
   }
 }
 
-@media (max-width: 500px){
-  .add-tasks-wrapper{
+@media (max-width: 500px) {
+  .add-tasks-wrapper {
     width: 350px;
   }
-  .tasks-list-wrapper{
+  .tasks-list-wrapper {
     width: 350px;
   }
 }
 
-@media (max-width: 350px){
-  .add-tasks-wrapper{
+@media (max-width: 350px) {
+  .add-tasks-wrapper {
     width: 250px;
   }
-  .tasks-list-wrapper{
+  .tasks-list-wrapper {
     width: 250px;
   }
 }
