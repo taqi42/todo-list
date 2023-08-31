@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { FiEdit } from "react-icons/fi";
-import { FaRegTrashCan } from "react-icons/fa6";
+import { FaRegTrashCan, FaFloppyDisk } from "react-icons/fa6";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import "./App.css";
 
@@ -100,6 +100,7 @@ function Main() {
                     <textarea
                       className="task-edit-input"
                       ref={editTextareaRef}
+                      rows={2}
                       value={editedText}
                       onChange={(e) => setEditedText(e.target.value)}
                     />
@@ -110,7 +111,7 @@ function Main() {
               </div>
               <div className="task-buttons">
                 <a className="edit-btn" onClick={() => handleEditTask(index)}>
-                  {editingIndex === index ? "Save" : <FiEdit />}
+                  {editingIndex === index ? <FaFloppyDisk/> : <FiEdit />}
                 </a>
                 <a
                   className="delete-btn"
