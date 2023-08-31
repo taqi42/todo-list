@@ -18,14 +18,19 @@ function Main() {
   const [tasks, setTasks] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedText, setEditedText] = useState("");
-  const textareaRef = useRef(null);
+  const inputTextareaRef = useRef(null);
+  const editTextareaRef = useRef(null);
 
   useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    if (inputTextareaRef.current) {
+      inputTextareaRef.current.style.height = "auto";
+      inputTextareaRef.current.style.height = `${inputTextareaRef.current.scrollHeight}px`;
     }
-  }, [input]);
+    if (editTextareaRef.current) {
+      editTextareaRef.current.style.height = "auto";
+      editTextareaRef.current.style.height = `${editTextareaRef.current.scrollHeight}px`;
+    }
+  }, [input, editedText]);
 
   function handleAddTask(e) {
     setInput(e.target.value);
@@ -64,7 +69,7 @@ function Main() {
     <div className="Main">
       <div className="add-tasks-wrapper">
         <textarea
-          ref={textareaRef}
+          ref={inputTextareaRef}
           className="task-input"
           rows={1}
           placeholder="Add tasks here..."
@@ -92,9 +97,9 @@ function Main() {
                   }
                 >
                   {editingIndex === index ? (
-                    <input
+                    <textarea
                       className="task-edit-input"
-                      type="text"
+                      ref={editTextareaRef}
                       value={editedText}
                       onChange={(e) => setEditedText(e.target.value)}
                     />
