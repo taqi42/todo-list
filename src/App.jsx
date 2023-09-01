@@ -34,6 +34,7 @@ function Main() {
 
   function handleAddTask(e) {
     setInput(e.target.value);
+    
   }
 
   function addTask() {
@@ -86,7 +87,7 @@ function Main() {
             <li key={index}>
               <div className="task-content">
                 <input
-                  className="tast-checkbox"
+                  className="task-checkbox"
                   type="checkbox"
                   checked={task.completed}
                   onChange={() => toggleComplete(index)}
